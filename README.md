@@ -1,5 +1,7 @@
 # K3s Dev Container
 
+A Dev Container running K3s, Kubernetes Dashboard and Helm Dashboard with a bunch of other goodies for you to use. This will accelerate your Kubernetes Developer workflow. Enjoy!  
+
 ## Introduction
 
 A "dev container" is a Docker container specifically configured to act as a fully functional development environment, allowing developers to work on a project with all necessary tools, dependencies, and settings pre-installed, regardless of their local machine setup, ensuring consistency across different environments and team members; essentially, it packages a complete development environment into a containerized format. 
