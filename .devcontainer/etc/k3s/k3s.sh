@@ -99,9 +99,16 @@ function k3s-install() {
   echo -e '\e[38;5;198m'"++++ "
   kubectl -n kube-system create token admin-user --duration=8760h
 
+  if [[ $CODESPACES == true ]]; then
+    KUBERNETES_DASHBOARD_URL="https://${CODESPACE_NAME}-8001.app.github.dev"
+    HELM_DASHBOARD_URL="https://${CODESPACE_NAME}-8002.app.github.dev"
+  else
+    KUBERNETES_DASHBOARD_URL="https://localhost:8001"
+    HELM_DASHBOARD_URL="http://localhost:8002"
+  fi
   echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Kubernetes Dashboard: https://localhost:8001 using the token above"
-  echo -e '\e[38;5;198m'"++++ Helm Dashboard: http://localhost:8002"
+  echo -e '\e[38;5;198m'"++++ Kubernetes Dashboard: ${KUBERNETES_DASHBOARD_URL} using the token above"
+  echo -e '\e[38;5;198m'"++++ Helm Dashboard: ${HELM_DASHBOARD_URL}"
   echo -e '\e[38;5;198m'"++++ "
 
   # echo -e '\e[38;5;198m'"++++ "
