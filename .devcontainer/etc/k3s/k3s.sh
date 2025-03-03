@@ -91,8 +91,8 @@ function k3s-install() {
   echo -e '\e[38;5;198m'"++++ "
   echo -e '\e[38;5;198m'"++++ Create ServiceAccount and ClusterRoleBinding"
   echo -e '\e[38;5;198m'"++++ "
-  kubectl apply -f /app/.devcontainer/k3s-etc/etc/k3s/dashboard-adminuser.yaml
-  kubectl apply -f /app/.devcontainer/k3s-etc/etc/k3s/dashboard-rolebind.yaml
+  kubectl apply -f /app/.devcontainer/etc/k3s/dashboard-adminuser.yaml
+  kubectl apply -f /app/.devcontainer/etc/k3s/dashboard-rolebind.yaml
 
   echo -e '\e[38;5;198m'"++++ "
   echo -e '\e[38;5;198m'"++++ Get admin-user token"
