@@ -21,7 +21,7 @@ function k3s-install() {
     echo -e '\e[38;5;198m'"++++ Docker is running"
   else
     echo -e '\e[38;5;198m'"++++ Ensure Docker is running.."
-    sudo bash /app/.devcontainer/k3s-etc/etc/docker/docker.sh
+    sudo bash /app/.devcontainer/etc/docker/docker.sh
   fi
 
   echo -e '\e[38;5;198m'"++++ "
@@ -68,13 +68,13 @@ function k3s-install() {
   helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
   attempts=0
   max_attempts=50 # for slow connections, pods takes longer to download and initialize
-  while ! ( sudo netstat -nlp | grep 18001 ) && (( $attempts < $max_attempts )); do
+  while ! ( sudo netstat -nlp | grep 8001 ) && (( $attempts < $max_attempts )); do
     attempts=$((attempts+1))
     sleep 10;
     echo -e '\e[38;5;198m'"++++ "
-    echo -e '\e[38;5;198m'"++++ kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 18001:443 --address=\"0.0.0.0\", (${attempts}/${max_attempts}) sleep 10s"
+    echo -e '\e[38;5;198m'"++++ kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8001:443 --address=\"0.0.0.0\", (${attempts}/${max_attempts}) sleep 10s"
     echo -e '\e[38;5;198m'"++++ "
-    kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 18001:443 --address="0.0.0.0" > /dev/null 2>&1 &
+    kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8001:443 --address="0.0.0.0" > /dev/null 2>&1 &
   done
 
   # https://github.com/komodorio/helm-dashboard
@@ -86,7 +86,7 @@ function k3s-install() {
   echo -e '\e[38;5;198m'"++++ "
   echo -e '\e[38;5;198m'"++++ Running Helm Dashboard"
   echo -e '\e[38;5;198m'"++++ "
-  helm dashboard --bind=0.0.0.0 --port 18002 --no-browser --no-analytics > /dev/null 2>&1 &
+  helm dashboard --bind=0.0.0.0 --port 8002 --no-browser --no-analytics > /dev/null 2>&1 &
 
   echo -e '\e[38;5;198m'"++++ "
   echo -e '\e[38;5;198m'"++++ Create ServiceAccount and ClusterRoleBinding"
@@ -100,8 +100,8 @@ function k3s-install() {
   kubectl -n kube-system create token admin-user --duration=8760h
 
   echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Kubernetes Dashboard: https://localhost:18001 using the token above"
-  echo -e '\e[38;5;198m'"++++ Helm Dashboard: http://localhost:18002"
+  echo -e '\e[38;5;198m'"++++ Kubernetes Dashboard: https://localhost:8001 using the token above"
+  echo -e '\e[38;5;198m'"++++ Helm Dashboard: http://localhost:8002"
   echo -e '\e[38;5;198m'"++++ "
 
   # echo -e '\e[38;5;198m'"++++ "
