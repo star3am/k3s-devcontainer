@@ -1,6 +1,6 @@
 {
     "dockerComposeFile": "./docker-compose.yml",
-    "service": "k3s-etc",
+    "service": "k3s-devcontainer",
     "workspaceFolder": "/app",
     "remoteUser": "ubuntu",
     "postStartCommand": {
@@ -42,22 +42,12 @@
           "evenBetterToml.formatter.alignComments": false,
           "[yaml]": {
             "editor.defaultFormatter": "redhat.vscode-yaml"
-          },
-          "[terraform]": {
-            "editor.formatOnSave": true,
-            "editor.defaultFormatter": "hashicorp.terraform",
-            "editor.tabSize": 2
-          },
-          "[terraform-vars]": {
-            "editor.tabSize": 2
           }
         },
         "extensions": [
           "dbaeumer.vscode-eslint",
           "esbenp.prettier-vscode",
-          "hashicorp.terraform",
           "nhoizey.gremlins",
-          "hashicorp.hcl",
           "redhat.vscode-yaml"
         ]
       }

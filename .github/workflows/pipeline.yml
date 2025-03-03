@@ -2,13 +2,13 @@
 # checkov:skip=CKV2_GHA_1: "Ensure top-level permissions are not set to write-all"
 # https://docs.github.com/en/actions/quickstart
 # hhttps://github.com/marketplace/actions/build-and-publish-docker-image-to-github-container-registry
-name: "Devcontainers Pipeline"
+name: "K3s Devcontainer Pipeline"
 
 on: # yamllint disable-line rule:truthy
   push: # yamllint disable-line rule:empty-values
 
 jobs:
-  docker-build-push-k3s-container:
+  docker-build-push-k3s-devcontainer:
     if: ${{ vars.REBUILD_CONTAINERS_IMAGE == 'true' }}
     runs-on: ubuntu-latest
 
@@ -37,8 +37,8 @@ jobs:
         with:
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          context: .devcontainer/k3s-etc
+          context: .devcontainer/k3s-devcontainer
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/k3s-etc:latest
+            ghcr.io/${{ github.repository_owner }}/k3s-devcontainer:latest
