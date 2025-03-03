@@ -9,8 +9,8 @@ services:
     image: ghcr.io/star3am/k3s-devcontainer:latest
     # Build the container from the Dockerfile before we run it
     # build:
-    #   context: ../../
-    #   dockerfile: .devcontainer/k3s-etc/Dockerfile
+    #   context: ../
+    #   dockerfile: .devcontainer/Dockerfile
     network_mode: "bridge"
     tmpfs:
       - /var/lib/docker:mode=0777,dev,size=15g,suid,exec # docker
