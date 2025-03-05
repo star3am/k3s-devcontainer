@@ -16,6 +16,8 @@ This project can be run Locally using a Dev Container in VSCode or in a Dev Cont
 
 ### Quick Start
 
+Click the "`Open in Github Codespaces`" button below and past the two bash commands inside the container terminal
+
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/star3am/k3s-devcontainer?quickstart=1)
 ```bash
 bash /app/.devcontainer/etc/docker/docker.sh
@@ -66,37 +68,37 @@ Create or login to your Github.com account
 
 <div align="center">
   <img src="images/github-project-codespace-k3s.png" alt="K3s Dev Container Github Project Codespace K3s" width="85%">
-  <p><em>K3s Dev Container Github Project Codespace K3s"</em></p>
+  <p><em>K3s Dev Container Github Project Codespace K3s</em></p>
 </div>
 
 <div align="center">
   <img src="images/github-project-codespace-k3s-done.png" alt="K3s Dev Container Github Project Codespace K3s done" width="85%">
-  <p><em>K3s Dev Container Github Project Codespace K3s done"</em></p>
+  <p><em>K3s Dev Container Github Project Codespace K3s done</em></p>
 </div>
 
 <div align="center">
   <img src="images/github-project-codespace-k3s-done-ports.png" alt="K3s Dev Container Github Project Codespace K3s done Ports" width="85%">
-  <p><em>K3s Dev Container Github Project Codespace K3s done Ports"</em></p>
+  <p><em>K3s Dev Container Github Project Codespace K3s done Ports</em></p>
 </div>
 
 <div align="center">
   <img src="images/github-project-codespace-k3s-kubernetes-dashboard-login.png" alt="K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Login" width="85%">
-  <p><em>K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Login"</em></p>
+  <p><em>K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Login</em></p>
 </div>
 
 <div align="center">
   <img src="images/github-project-codespace-k3s-kubernetes-dashboard-select-all-namespaces.png" alt="K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Select All Namespaces" width="85%">
-  <p><em>K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Select All Namespaces"</em></p>
+  <p><em>K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Select All Namespaces</em></p>
 </div>
 
 <div align="center">
   <img src="images/github-project-codespace-k3s-kubernetes-dashboard-home.png" alt="K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Home" width="85%">
-  <p><em>K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Home"</em></p>
+  <p><em>K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Home</em></p>
 </div>
 
 <div align="center">
   <img src="images/github-project-codespace-k3s-helm-dashboard-home.png" alt="K3s Dev Container Github Project Codespace K3s Helm Dashboard Home" width="85%">
-  <p><em>K3s Dev Container Github Project Codespace K3s Helm Dashboard Home"</em></p>
+  <p><em>K3s Dev Container Github Project Codespace K3s Helm Dashboard Home</em></p>
 </div>
 
 ### Running K3s Locally in a Dev Container using Visual Studio Code
@@ -151,37 +153,37 @@ Install the following dependencies
 
 <div align="center">
   <img src="images/vscode-project-devcontainer-k3s.png" alt="K3s Dev Container VSCode Project Dev Container K3s" width="85%">
-  <p><em>K3s Dev Container VSCode Project Dev Container K3s"</em></p>
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s</em></p>
 </div>
 
 <div align="center">
   <img src="images/vscode-project-devcontainer-k3s-done.png" alt="K3s Dev Container VSCode Project Dev Container K3s done" width="85%">
-  <p><em>K3s Dev Container VSCode Project Dev Container K3s done"</em></p>
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s done</em></p>
 </div>
 
 <div align="center">
   <img src="images/vscode-project-devcontainer-k3s-done-ports.png" alt="K3s Dev Container VSCode Project Dev Container K3s done Ports" width="85%">
-  <p><em>K3s Dev Container VSCode Project Dev Container K3s done Ports"</em></p>
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s done Ports</em></p>
 </div>
 
 <div align="center">
   <img src="images/vscode-project-devcontainer-k3s-kubernetes-dashboard-login.png" alt="K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Login" width="85%">
-  <p><em>K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Login"</em></p>
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Login</em></p>
 </div>
 
 <div align="center">
   <img src="images/vscode-project-devcontainer-k3s-kubernetes-dashboard-select-all-namespaces.png" alt="K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Select All Namespaces" width="85%">
-  <p><em>K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Select All Namespaces"</em></p>
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Select All Namespaces</em></p>
 </div>
 
 <div align="center">
   <img src="images/vscode-project-devcontainer-k3s-kubernetes-dashboard-home.png" alt="K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Home" width="85%">
-  <p><em>K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Home"</em></p>
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Home</em></p>
 </div>
 
 <div align="center">
   <img src="images/vscode-project-devcontainer-k3s-helm-dashboard-home.png" alt="K3s Dev Container VSCode Project Dev Container K3s Helm Dashboard Home" width="85%">
-  <p><em>K3s Dev Container VSCode Project Dev Container K3s Helm Dashboard Home"</em></p>
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s Helm Dashboard Home</em></p>
 </div>
 
 ### WSL Config
