@@ -1,0 +1,44 @@
+---
+# checkov:skip=CKV2_GHA_1: "Ensure top-level permissions are not set to write-all"
+# https://docs.github.com/en/actions/quickstart
+# hhttps://github.com/marketplace/actions/build-and-publish-docker-image-to-github-container-registry
+name: "K3s Devcontainer Pipeline"
+
+on: # yamllint disable-line rule:truthy
+  push: # yamllint disable-line rule:empty-values
+
+jobs:
+  docker-build-push-k3s-devcontainer:
+    if: ${{ vars.REBUILD_CONTAINERS_IMAGE == 'true' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checking out the repo
+      - uses: actions/checkout@v3
+
+      # https://github.com/docker/setup-qemu-action
+      # https://blog.thesparktree.com/docker-multi-arch-github-actions
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+
+      # https://github.com/docker/setup-buildx-action
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          context: .devcontainer
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/k3s-devcontainer:latest

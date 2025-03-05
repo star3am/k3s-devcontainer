@@ -1,0 +1,17 @@
+#!/bin/bash
+/usr/bin/toilet --gay -f standard *DevContainer* -w 170
+printf "%s"
+printf "\n"
+printf '\e[33;0;36m'"Welcome! You are running in a DevContainer.\n"
+printf '\e[33;0;36m'"Have a look at the Dockerfile to get deeper insight into your environment.\n"
+printf "\n"
+printf '\e[33;1;93m'"Documentation: \e[38;5;198m https://code.visualstudio.com/docs/devcontainers/containers\n"
+printf "\n"
+printf '\e[33;1;93m'" * Start Docker: \e[38;5;198m bash /app/.devcontainer/etc/docker/docker.sh\n"
+printf '\e[33;1;93m'" * Start K3s: \e[38;5;198m bash /app/.devcontainer/etc/k3s/k3s.sh\n"
+printf '\e[33;1;93m'" * Kubernetes Dashboard: \e[38;5;198m http://localhost:8001/\n"
+printf '\e[33;1;93m'" * Helm Dashboard: \e[38;5;198m http://localhost:8002/\n"
+printf '\e[33;1;93m'" * Show All Pods & Services: \e[38;5;198m kubectl get po,svc -A\n"
+printf '\e[33;1;93m'" * Show Node Status: \e[38;5;198m kubectl get nodes\n"
+printf '\e[33;1;93m'" * Use K9s: \e[38;5;198m k9s -A\n"
+printf "\n"

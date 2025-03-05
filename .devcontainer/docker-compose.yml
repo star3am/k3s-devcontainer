@@ -1,0 +1,38 @@
+---
+name: "k3s-devcontainer"
+services:
+  k3s-devcontainer:
+    tty: true
+    privileged: true
+    cgroup: host
+    # Start the Devcontainer from a pre-built image from a docker repository
+    image: ghcr.io/star3am/k3s-devcontainer:latest
+    # Build the container from the Dockerfile before we run it
+    # build:
+    #   context: ../
+    #   dockerfile: .devcontainer/Dockerfile
+    network_mode: "bridge"
+    tmpfs:
+      - /var/lib/docker:mode=0777,dev,size=15g,suid,exec # docker
+      - /var/lib/rancher:mode=0777,dev,size=15g,suid,exec # k3s
+      - /run
+    ports:
+      - "6443:6443" # k3s kubernetes cluster api
+      - "8001:8001" # kubernetes dashboard
+      - "8002:8002" # helm dashboard
+    volumes:
+      # Mounts the project folder into the container
+      - "../:/app"
+      # Needed for systemd
+      - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+      # Mount your ~/.ssh folder into the container
+      # for Authenticating to Github
+      - "~/.ssh:/home/ubuntu/.ssh"
+      # For GPG Auth to Github
+      - "~/.gnupg:/home/ubuntu/.gnupg"
+      # Add your .aws or .azure or .kube directories here
+      # - "$AZURE_CONFIG_DIR:/home/ubuntu/.azure"
+    working_dir: "/app"
+    environment:
+      - GPG_TTY=/dev/pts/1
+      - KUBECONFIG=/home/ubuntu/.kube/config
