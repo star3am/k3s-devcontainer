@@ -12,6 +12,87 @@ K3s is a lightweight, open-source version of Kubernetes that's designed for reso
 
 ## Getting Started
 
+This project can be run Locally using a Dev Container in VSCode or in a Dev Container on Github Codespaces 
+
+### Running K3s On the Internet in Github Codespaces
+
+Create or login to your Github.com account
+
+- Fork this repository https://github.com/star3am/k3s-devcontainer
+- Click on Code -> Codespaces -> Create Codespace on main
+
+<div align="center">
+  <img src="images/github-project.png" alt="K3s Dev Container Github Project" width="85%">
+  <p><em>K3s Dev Container Github Project</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-new-codespace-on-main.png" alt="K3s Dev Container Github Project Create new Codespace" width="85%">
+  <p><em>K3s Dev Container Github Project Create new Codespace</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-new-codespace-on-main-opening.png" alt="K3s Dev Container Github Project Create new Codespace Opening" width="85%">
+  <p><em>K3s Dev Container Github Project Create new Codespace Opening</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-new-codespace-on-main-opened.png" alt="K3s Dev Container Github Project Create new Codespace Opened" width="85%">
+  <p><em>K3s Dev Container Github Project Create new Codespace Opened</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-docker.png" alt="K3s Dev Container Github Project Codespace Docker" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace Docker</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-docker-done.png" alt="K3s Dev Container Github Project Codespace Docker done" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace Docker done</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-docker-info.png" alt="K3s Dev Container Github Project Codespace Docker info" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace Docker info</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-k3s.png" alt="K3s Dev Container Github Project Codespace K3s" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace K3s"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-k3s-done.png" alt="K3s Dev Container Github Project Codespace K3s done" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace K3s done"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-k3s-done.png" alt="K3s Dev Container Github Project Codespace K3s done Ports" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace K3s done Ports"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-k3s-kubernetes-dashboard-login.png" alt="K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Login" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Login"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-k3s-kubernetes-dashboard-select-all-namespaces.png" alt="K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Select All Namespaces" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Select All Namespaces"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-k3s-kubernetes-dashboard-home.png" alt="K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Home" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace K3s Kubernetes Dashboard Home"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/github-project-codespace-k3s-helm-dashboard-home.png" alt="K3s Dev Container Github Project Codespace K3s Helm Dashboard Home" width="85%">
+  <p><em>K3s Dev Container Github Project Codespace K3s Helm Dashboard Home"</em></p>
+</div>
+
+### Running K3s Locally in a Dev Container using Visual Studio Code
+
 Install the following dependencies
 
 - Docker or Docker Desktop https://www.docker.com/products/docker-desktop/
