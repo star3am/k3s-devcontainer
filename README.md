@@ -14,6 +14,8 @@ K3s is a lightweight, open-source version of Kubernetes that's designed for reso
 
 This project can be run Locally using a Dev Container in VSCode or in a Dev Container on Github Codespaces 
 
+[![Kubernetes in a Dev Container](images/youtube-image.png)](https://www.youtube.com/watch?v=3ya9w2m6CLo)
+
 ### Quick Start
 
 Click the "`Open in Github Codespaces`" button below and past the two bash commands inside the container terminal
