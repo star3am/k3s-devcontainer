@@ -126,6 +126,56 @@ Install the following dependencies
   <p><em>Visual Studio Code Project Dev Container</em></p>
 </div>
 
+<div align="center">
+  <img src="images/vscode-project-devcontainer-docker.png" alt="K3s Dev Container VSCode Project Dev Container Docker" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container Docker</em></p>
+</div>
+
+<div align="center">
+  <img src="images/vscode-project-devcontainer-docker-done.png" alt="K3s Dev Container VSCode Project Dev Container Docker done" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container Docker done</em></p>
+</div>
+
+<div align="center">
+  <img src="images/vscode-project-devcontainer-docker-info.png" alt="K3s Dev Container VSCode Project Dev Container Docker info" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container Docker info</em></p>
+</div>
+
+<div align="center">
+  <img src="images/vscode-project-devcontainer-k3s.png" alt="K3s Dev Container VSCode Project Dev Container K3s" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/vscode-project-devcontainer-k3s-done.png" alt="K3s Dev Container VSCode Project Dev Container K3s done" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s done"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/vscode-project-devcontainer-k3s-done-ports.png" alt="K3s Dev Container VSCode Project Dev Container K3s done Ports" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s done Ports"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/vscode-project-devcontainer-k3s-kubernetes-dashboard-login.png" alt="K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Login" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Login"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/vscode-project-devcontainer-k3s-kubernetes-dashboard-select-all-namespaces.png" alt="K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Select All Namespaces" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Select All Namespaces"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/vscode-project-devcontainer-k3s-kubernetes-dashboard-home.png" alt="K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Home" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s Kubernetes Dashboard Home"</em></p>
+</div>
+
+<div align="center">
+  <img src="images/vscode-project-devcontainer-k3s-helm-dashboard-home.png" alt="K3s Dev Container VSCode Project Dev Container K3s Helm Dashboard Home" width="85%">
+  <p><em>K3s Dev Container VSCode Project Dev Container K3s Helm Dashboard Home"</em></p>
+</div>
+
 ### WSL Config
 
 Place the `.wslconfig` file inside your Windows user home directory, typically, `C:\Users\YOUR_USER\.wslconfig`
