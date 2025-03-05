@@ -89,6 +89,32 @@ function k3s-install() {
   helm dashboard --bind=0.0.0.0 --port 8002 --no-browser --no-analytics > /dev/null 2>&1 &
 
   echo -e '\e[38;5;198m'"++++ "
+  echo -e '\e[38;5;198m'"++++ Helm version"
+  echo -e '\e[38;5;198m'"++++ "
+  helm version
+
+  # https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
+  echo -e '\e[38;5;198m'"++++ Helm add Bitnami repo"
+  echo -e '\e[38;5;198m'"++++ helm repo add bitnami https://charts.bitnami.com/bitnami"
+  echo -e '\e[38;5;198m'"++++ "
+  helm repo add bitnami https://charts.bitnami.com/bitnami
+
+  echo -e '\e[38;5;198m'"++++ "
+  echo -e '\e[38;5;198m'"++++ Helm repo update"
+  echo -e '\e[38;5;198m'"++++ "
+  helm repo update
+
+  echo -e '\e[38;5;198m'"++++ "
+  echo -e '\e[38;5;198m'"++++ Helm search repo bitnami"
+  echo -e '\e[38;5;198m'"++++ "
+  helm search repo bitnami
+
+  echo -e '\e[38;5;198m'"++++ "
+  echo -e '\e[38;5;198m'"++++ Installing k8s CLI"
+  echo -e '\e[38;5;198m'"++++ "
+  curl -sS https://webinstall.dev/k9s | bash
+
+  echo -e '\e[38;5;198m'"++++ "
   echo -e '\e[38;5;198m'"++++ Create ServiceAccount and ClusterRoleBinding"
   echo -e '\e[38;5;198m'"++++ "
   kubectl apply -f /app/.devcontainer/etc/k3s/dashboard-adminuser.yaml
