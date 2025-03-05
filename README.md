@@ -1,6 +1,6 @@
 # K3s Dev Container
 
-A Dev Container running K3s, Kubernetes Dashboard and Helm Dashboard with a bunch of other goodies for you to use. This will accelerate your Kubernetes Developer workflow. Using this Dev Container will giv eyou a K3s Kubernetes installation in minutes. 
+A Dev Container running K3s, Kubernetes Dashboard and Helm Dashboard with a bunch of other goodies for you to use. This will accelerate your Kubernetes Developer workflow, giving you instant access to Kubernetes in a Docker container. Using this Dev Container will give you a K3s Kubernetes installation in minutes. 
 
 ## Introduction
 
@@ -19,6 +19,31 @@ Install the following dependencies
 - Visual Studio Code https://code.visualstudio.com/download (with Remote development in Containers extension) https://code.visualstudio.com/docs/remote/containers-tutorial
 - Clone this repository
 - Now Open VSCode and Open this repository (See screenshot below)
+
+<div align="center">
+  <img src="images/download-and-install-docker-desktop.png" alt="Download and install Docker desktop" width="85%">
+  <p><em>Download and install Docker desktop</em></p>
+</div>
+
+<div align="center">
+  <img src="images/download-and-install-visual-studio-code.png" alt="Download and install Visual Studio Code" width="85%">
+  <p><em>Download and install Visual Studio Code</em></p>
+</div>
+
+<div align="center">
+  <img src="images/download-and-install-visual-studio-code-dev-containers-extension.png" alt="Download and install Visual Studio Code Dev Containers Extension" width="85%">
+  <p><em>Download and install Visual Studio Code Dev Containers Extension</em></p>
+</div>
+
+<div align="center">
+  <img src="images/visual-studio-code-open-project.png" alt="Visual Studio Code Open Project" width="85%">
+  <p><em>Visual Studio Code Open Project</em></p>
+</div>
+
+<div align="center">
+  <img src="images/visual-studio-code-project-devcontainer.png" alt="Visual Studio Code Project Dev Container" width="85%">
+  <p><em>Visual Studio Code Project Dev Container</em></p>
+</div>
 
 ### WSL Config
 
