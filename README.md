@@ -67,7 +67,7 @@ Create or login to your Github.com account
 </div>
 
 <div align="center">
-  <img src="images/github-project-codespace-k3s-done.png" alt="K3s Dev Container Github Project Codespace K3s done Ports" width="85%">
+  <img src="images/github-project-codespace-k3s-done-ports.png" alt="K3s Dev Container Github Project Codespace K3s done Ports" width="85%">
   <p><em>K3s Dev Container Github Project Codespace K3s done Ports"</em></p>
 </div>
 
