@@ -3,8 +3,8 @@
     "service": "k3s-devcontainer",
     "workspaceFolder": "/app",
     "remoteUser": "ubuntu",
-    "forwardPorts": ["kubernetes-dashboard:8001"],
-    "portsAttributes": {"8001": {"label": "kubernetes-dashboard", "protocol": "https"}},
+    "forwardPorts": ["localhost:8001"],
+    "portsAttributes": {"8001": {"label": "8001", "protocol": "https", "onAutoForward": "silent"}},
     "postStartCommand": {
       "set-git-config-safe-directory": "git config --global --add safe.directory ${containerWorkspaceFolder}",
       "set-git-config-line-endings": "git config --global core.autocrlf input",
