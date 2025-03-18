@@ -11,6 +11,8 @@
     "postAttachCommand": {
       "print-message-of-the-day": "bash /etc/update-motd.d/00-header"
     },
+    "forwardPorts": ["localhost:8001"],
+    "portsAttributes": {"8001": {"protocol": "https"}},
     "customizations": {
       "vscode": {
         "settings": {
