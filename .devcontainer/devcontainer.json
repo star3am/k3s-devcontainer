@@ -3,8 +3,6 @@
     "service": "k3s-devcontainer",
     "workspaceFolder": "/app",
     "remoteUser": "ubuntu",
-    "forwardPorts": ["localhost:8001"],
-    "portsAttributes": {"8001": {"label": "8001", "protocol": "https", "onAutoForward": "silent"}},
     "postStartCommand": {
       "set-git-config-safe-directory": "git config --global --add safe.directory ${containerWorkspaceFolder}",
       "set-git-config-line-endings": "git config --global core.autocrlf input",
@@ -13,6 +11,8 @@
     "postAttachCommand": {
       "print-message-of-the-day": "bash /etc/update-motd.d/00-header"
     },
+    "forwardPorts": ["localhost:8001"],
+    "portsAttributes": {"8001": {"protocol": "https"}},
     "customizations": {
       "vscode": {
         "settings": {
