@@ -1,6 +1,9 @@
 #!/bin/bash
 # https://github.com/k3s-io/k3s/tree/master?tab=readme-ov-file#quick-start---install-script
 
+# load helper functions
+source /app/.devcontainer/etc/util/functions.sh
+
 function k3s-install() {
   # Determine CPU Architecture
   arch=$(lscpu | grep "Architecture" | awk '{print $NF}')
@@ -9,35 +12,29 @@ function k3s-install() {
   elif  [[ $arch == aarch64 ]]; then
     ARCH="arm64"
   fi
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ CPU is $ARCH"
-  echo -e '\e[38;5;198m'"++++ "
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Ensure Docker Daemon is running (Dependency)"
-  echo -e '\e[38;5;198m'"++++ "
+  printInfoSection "CPU is $ARCH"
+
+  printInfoSection "Ensure Docker Daemon is running (Dependency)"
+  
   if pgrep -x "dockerd" >/dev/null
   then
-    echo -e '\e[38;5;198m'"++++ Docker is running"
+    printInfo "Docker is running"
   else
-    echo -e '\e[38;5;198m'"++++ Ensure Docker is running.."
+    printInfo "Ensure Docker is running.."
     sudo bash /app/.devcontainer/etc/docker/docker.sh
   fi
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Delete K3s"
-  echo -e '\e[38;5;198m'"++++ "
+  printInfoSection "Deleting K3s"
   sudo bash /usr/local/bin/k3s-uninstall.sh || true
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Installing K3s"
-  echo -e '\e[38;5;198m'"++++ "
-  curl -sfL https://get.k3s.io | sh -
+  
+  printInfoSection "Installing K3s"
+  curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644 --disable traefik" sh -
 
   # https://docs.k3s.io/cluster-access#accessing-the-cluster-from-outside-with-kubectl
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Configure K3s Cluster access to user ubuntu"
-  echo -e '\e[38;5;198m'"++++ "
+  
+  printInfoSection "Configure K3s Cluster access to user ubuntu"
   # Set kube config for root
   sudo mkdir -p /root/.kube
   sudo cp /etc/rancher/k3s/k3s.yaml /root/.kube/config
@@ -51,78 +48,65 @@ function k3s-install() {
   sudo cp /etc/rancher/k3s/k3s.yaml /app/.kube/config
   sudo chmod 777 -R /app/.kube
 
+  printInfoSection "Setting up NGINX Ingress"
+  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
+  
   # https://helm.sh/docs/intro/install/#from-script
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Installing Helm"
-  echo -e '\e[38;5;198m'"++++ "
+  printInfoSection " Installing Helm"
   cd /tmp
   sudo curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
   sudo chmod 700 get_helm.sh
   sudo /tmp/get_helm.sh
 
-  # https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Installing Kubernetes dashboard"
-  echo -e '\e[38;5;198m'"++++ "
+  # https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/   
+  printInfoSection " Installing Kubernetes dashboard"
+   
   helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
   helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
-  attempts=0
-  max_attempts=50 # for slow connections, pods takes longer to download and initialize
-  while ! ( sudo netstat -nlp | grep 8001 ) && (( $attempts < $max_attempts )); do
-    attempts=$((attempts+1))
-    sleep 10;
-    echo -e '\e[38;5;198m'"++++ "
-    echo -e '\e[38;5;198m'"++++ kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8001:443 --address=\"0.0.0.0\", (${attempts}/${max_attempts}) sleep 10s"
-    echo -e '\e[38;5;198m'"++++ "
-    kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8001:443 --address="0.0.0.0" > /dev/null 2>&1 &
-  done
+  
 
+  # In the functions you can specify the amount of retries and the NS
+  waitForAllPods
+  printInfoSection " kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8001:443 --address=\"0.0.0.0\", (${attempts}/${max_attempts}) sleep 10s"
+  kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8001:443 --address="0.0.0.0" > /dev/null 2>&1 &
   # https://github.com/komodorio/helm-dashboard
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Installing Helm Dashboard"
-  echo -e '\e[38;5;198m'"++++ "
+   
+    printInfoSection "Installing Helm Dashboard"
+   
   helm plugin install https://github.com/komodorio/helm-dashboard.git
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Running Helm Dashboard"
-  echo -e '\e[38;5;198m'"++++ "
+   
+  printInfoSection "Running Helm Dashboard" 
   helm dashboard --bind=0.0.0.0 --port 8002 --no-browser --no-analytics > /dev/null 2>&1 &
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Helm version"
-  echo -e '\e[38;5;198m'"++++ "
+   
+  printInfoSection "Helm version" 
   helm version
 
   # https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
-  echo -e '\e[38;5;198m'"++++ Helm add Bitnami repo"
-  echo -e '\e[38;5;198m'"++++ helm repo add bitnami https://charts.bitnami.com/bitnami"
-  echo -e '\e[38;5;198m'"++++ "
+  printInfoSection "Helm add Bitnami repo"
+  printInfoSection "helm repo add bitnami https://charts.bitnami.com/bitnami" 
   helm repo add bitnami https://charts.bitnami.com/bitnami
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Helm repo update"
-  echo -e '\e[38;5;198m'"++++ "
+   
+  printInfoSection "Helm repo update" 
   helm repo update
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Helm search repo bitnami"
-  echo -e '\e[38;5;198m'"++++ "
+   
+  printInfoSection "Helm search repo bitnami"  
   helm search repo bitnami
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Installing k8s CLI"
-  echo -e '\e[38;5;198m'"++++ "
+   
+  printInfoSection "Installing k8s CLI" 
   curl -sS https://webinstall.dev/k9s | bash
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Create ServiceAccount and ClusterRoleBinding"
-  echo -e '\e[38;5;198m'"++++ "
+   
+  printInfoSection "Create ServiceAccount and ClusterRoleBinding" 
   kubectl apply -f /app/.devcontainer/etc/k3s/dashboard-adminuser.yaml
   kubectl apply -f /app/.devcontainer/etc/k3s/dashboard-rolebind.yaml
 
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Get admin-user token"
-  echo -e '\e[38;5;198m'"++++ "
+   
+  printInfoSection "Get admin-user token" 
   kubectl -n kube-system create token admin-user --duration=8760h
 
   if [[ $CODESPACES == true ]]; then
@@ -132,14 +116,11 @@ function k3s-install() {
     KUBERNETES_DASHBOARD_URL="https://localhost:8001"
     HELM_DASHBOARD_URL="http://localhost:8002"
   fi
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Kubernetes Dashboard: ${KUBERNETES_DASHBOARD_URL} using the token above"
-  echo -e '\e[38;5;198m'"++++ Helm Dashboard: ${HELM_DASHBOARD_URL}"
-  echo -e '\e[38;5;198m'"++++ "
 
-  # echo -e '\e[38;5;198m'"++++ "
-  # echo -e '\e[38;5;198m'"++++ Debug"
-  # echo -e '\e[38;5;198m'"++++ "
+  printInfoSection "Kubernetes Dashboard: ${KUBERNETES_DASHBOARD_URL} using the token above"
+  printInfoSection "Helm Dashboard: ${HELM_DASHBOARD_URL}"
+
+  # printInfoSection "Debug"
   # k3s check-config
 }
 

@@ -20,8 +20,8 @@
     "customizations": {
       "vscode": {
         "settings": {
-          "editor.fontSize": 16,
-          "terminal.integrated.fontSize": 16,
+          "editor.fontSize": 12,
+          "terminal.integrated.fontSize": 12,
           "terminal.integrated.scrollback": 1000,
           "[markdown]": {
             "editor.defaultFormatter": "vscode.markdown-language-features",
